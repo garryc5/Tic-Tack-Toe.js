@@ -25,6 +25,7 @@ function checkWin(board)
        if(Math.abs(board[0][0]+board[1][1]+board[2][2]) ==3
         || Math.abs(board[0][2]+board[1][1]+board[2][0]) ==3 
        )return true;
+       if(!board[0].includes(0)&&!board[1].includes(0)&&!board[2].includes(0)){winner = "Tie"; return true;}
 
 }
 function initializeVars()
@@ -73,7 +74,6 @@ function playersTurn(evt)
     board
     [parseInt(evt.target.id.split('').shift())]
     [parseInt(evt.target.id.split('').pop())] = turn;
-    console.log(checkWin(board));
     if(checkWin(board))
      {
         render();
@@ -84,8 +84,10 @@ function playersTurn(evt)
     render();
 }
 function displayWinner()
-{
+{   
+    if(winner == 'Tie') {$('turn').textContent =`${winner} Game`;return}
     if(fill[turn]=='x'){winner =player[1]}
     else{winner = player[0]} 
     $('turn').textContent =`${winner} Is The Winner`;
+    
 }
