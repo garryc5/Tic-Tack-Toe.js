@@ -10,12 +10,14 @@ body
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 500px;
+    min-height: 500px;
 }
 section#board
 {
     display: none;
-    grid-template-rows: repeat(3,25vmin);
-    grid-template-columns: repeat(3,25vmin);
+    grid-template-rows: repeat(3,20vmin);
+    grid-template-columns: repeat(3,20vmin);
     grid-gap: 2vmin;
     background-color: black;
 }
@@ -41,4 +43,9 @@ section#turns
     grid-template-columns: repeat(3,25vmin);
     grid-gap: 2vmin;
     text-align: center;
+}
+#reset
+{
+    display: none;
+    background-color: white;
 }

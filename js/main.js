@@ -41,15 +41,17 @@ function initializeVars()
     player[0] = $('player-twos-name').value;
     player[1] = player[1] ? player[1] : "anonymous";
     player[0] = player[0] ? player[0] : "anonymous";
-    $('game-starter').style.display="none";
+
     firstRender();
     render();
 }
 function firstRender()
 {
+    $('game-starter').style.display="none";
     $('p2-name').textContent = player[0];
     $('p1-name').textContent = player[1];
     $('board').style.display= 'grid';
+    $('reset').style.display='block';
 }
 function $(name)
 {
@@ -70,7 +72,6 @@ function playersTurn(evt)
     if(evt.target.id=="board"||winner)return;
     if(board[parseInt(evt.target.id.split('').shift())]
     [parseInt(evt.target.id.split('').pop())])return; 
-
     board
     [parseInt(evt.target.id.split('').shift())]
     [parseInt(evt.target.id.split('').pop())] = turn;
@@ -90,4 +91,16 @@ function displayWinner()
     else{winner = player[0]} 
     $('turn').textContent =`${winner} Is The Winner`;
     
+}
+function reset()
+{
+ board.forEach(function(row, colID)
+ {
+    row.forEach(function(cell,rowID)
+    {
+       board[colID][rowID]=0;
+    });
+ });   
+ winner=undefined;
+ render();
 }
