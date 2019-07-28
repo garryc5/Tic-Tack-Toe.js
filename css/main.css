@@ -1,0 +1,33 @@
+*
+{
+    box-sizing: border-box;
+}
+body
+{
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+section#board
+{
+    display: none;
+    grid-template-rows: repeat(3,25vmin);
+    grid-template-columns: repeat(3,25vmin);
+    grid-gap: 2vmin;
+    background-color: black;
+}
+section#board div:hover
+{
+background-color: #4aeded;
+}
+section#board div
+{
+    background-color: white;
+}
+section#game-starter
+{
+    margin: 4vmin;
+}
