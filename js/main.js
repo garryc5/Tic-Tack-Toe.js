@@ -13,7 +13,7 @@ let player = [2];
 /*----- event listeners -----*/ 
 $("board").addEventListener("click",playersTurn);
 /*----- functions -----*/
-
+//utillity 
 function checkWin(board)
 {
     for(var x=0;x<3;x++)
@@ -41,31 +41,13 @@ function initializeVars()
     player[0] = $('player-twos-name').value;
     player[1] = player[1] ? player[1] : "anonymous";
     player[0] = player[0] ? player[0] : "anonymous";
-
+    winner = null;
     firstRender();
     render();
-}
-function firstRender()
-{
-    $('game-starter').style.display="none";
-    $('p2-name').textContent = player[0];
-    $('p1-name').textContent = player[1];
-    $('board').style.display= 'grid';
-    $('reset').style.display='block';
 }
 function $(name)
 {
     return document.getElementById(name);
-}
-function render()
-{
-    $('turn').textContent = `${fill[turn]}'s turn`;
-    board.forEach(function(row, colId){
-        row.forEach(function(div, rowId){
-            $(`${colId}${rowId}`).textContent=fill[div]
-        });
-    });
-
 }
 function playersTurn(evt)
 {    
@@ -81,9 +63,10 @@ function playersTurn(evt)
         displayWinner();
          return;
      }
-    turn = turn == 1 ? -1:1;
+    turn *-1;
     render();
 }
+//renderers
 function displayWinner()
 {   
     if(winner == 'Tie') {$('turn').textContent =`${winner} Game`;return}
@@ -92,15 +75,21 @@ function displayWinner()
     $('turn').textContent =`${winner} Is The Winner`;
     
 }
-function reset()
+function firstRender()
 {
- board.forEach(function(row, colID)
- {
-    row.forEach(function(cell,rowID)
-    {
-       board[colID][rowID]=0;
+    $('game-starter').style.display="none";
+    $('p2-name').textContent = player[0];
+    $('p1-name').textContent = player[1];
+    $('board').style.display= 'grid';
+    $('reset').style.display='block';
+}
+function render()
+{
+    $('turn').textContent = `${fill[turn]}'s turn`;
+    board.forEach(function(row, colId){
+        row.forEach(function(div, rowId){
+            $(`${colId}${rowId}`).textContent=fill[div]
+        });
     });
- });   
- winner=undefined;
- render();
+
 }
