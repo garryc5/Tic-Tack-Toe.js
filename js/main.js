@@ -63,7 +63,7 @@ function playersTurn(evt)
         displayWinner();
          return;
      }
-    turn *-1;
+    turn *=-1;
     render();
 }
 //renderers
